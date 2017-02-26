@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170222223941) do
+ActiveRecord::Schema.define(version: 20170226194923) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,12 +18,16 @@ ActiveRecord::Schema.define(version: 20170222223941) do
   create_table "event_classes", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "event_id"
+    t.index ["event_id"], name: "index_event_classes_on_event_id", using: :btree
   end
 
   create_table "events", force: :cascade do |t|
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
     t.string   "event_calendar_id"
+    t.integer  "metric_id"
+    t.index ["metric_id"], name: "index_events_on_metric_id", using: :btree
   end
 
   create_table "metrics", force: :cascade do |t|
@@ -50,4 +54,6 @@ ActiveRecord::Schema.define(version: 20170222223941) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "event_classes", "events"
+  add_foreign_key "events", "metrics"
 end
