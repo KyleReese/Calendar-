@@ -1,14 +1,13 @@
 class Metric < ApplicationRecord
-  belongs_to :Event
   METRIC_TYPES = {
     integer: "INTEGER",
     boolean: "BOOLEAN",
     time: "TIME"
   }
 
-  validates :type, inclusion: METRIC_TYPES
+  validates :metric_type, inclusion: { in: METRIC_TYPES.to_a.map{|i| i[1]} }
 
-  def types
+  def self.types
     METRIC_TYPES
   end
 end

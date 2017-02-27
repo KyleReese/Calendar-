@@ -6,8 +6,10 @@ class MetricTest < ActiveSupport::TestCase
   # end
 
   test "validates" do
-    good = Metric.new(type: Metric.types[:integer])
-    bad = Metric.new(type: "nonsense")
-    # TODO figure out test throws with minitest
+    good = Metric.new(metric_type: Metric.types[:integer])
+    bad = Metric.new(metric_type: "nonsense")
+
+    assert_raises(ActiveRecord::RecordInvalid) { bad.save! }
+    good.save!
   end
 end
