@@ -4,9 +4,13 @@ class UsersController < ApplicationController
   end
 
   def show
-    byebug
+    @user = User.find(params[:id])
   end
 
   def destroy
+  end
+
+  def user_params
+    params.require(:user).permit(:id)
   end
 end

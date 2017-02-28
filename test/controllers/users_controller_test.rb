@@ -10,5 +10,13 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_equal 200, status
   end
 
-  
+  test "get#show_found" do
+    get "/users/1"
+    assert_equal 200, status
+  end
+
+  test "get#show_not_found" do
+    assert_raises(ActiveRecord::RecordNotFound){ get "/users/3" }
+  end
+
 end
