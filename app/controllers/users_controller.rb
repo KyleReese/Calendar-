@@ -8,9 +8,8 @@ class UsersController < ApplicationController
   end
 
   def destroy
-  end
-
-  def user_params
-    params.require(:user).permit(:id)
+    @user = User.find(params[:id])
+    @user.destroy!
+    redirect_to users_path
   end
 end

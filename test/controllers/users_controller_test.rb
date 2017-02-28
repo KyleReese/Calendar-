@@ -19,4 +19,12 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_raises(ActiveRecord::RecordNotFound){ get "/users/3" }
   end
 
+  test "delete#destroy_exists" do
+    delete "/users/1"
+    assert_equal 302, status
+  end
+
+  test "delete#destroy_doesnt_exist" do
+    assert_raises(ActiveRecord::RecordNotFound){ delete "/users/3" }
+  end
 end
