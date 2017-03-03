@@ -11,7 +11,8 @@ gem 'therubyracer'
 gem 'devise'
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
-
+#calendar api gem
+gem 'google-api-client', '~> 0.9', require: 'google/apis/calendar_v3'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.1'
 # Use sqlite3 as the database for Active Record
