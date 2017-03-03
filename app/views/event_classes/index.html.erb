@@ -4,3 +4,4 @@
     <li><a href="<%= "/event_classes/#{e_class.id}"%>"><%= e_class.name %></a></li>
   <% end %>
 </ul>
+<%= link_to "Create New Event Class", {controller: "event_classes", action: "new"}, class: "btn btn-inverse" %>
