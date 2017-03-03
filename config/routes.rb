@@ -9,5 +9,5 @@ Rails.application.routes.draw do
 
   resources :events
   resources :reports
-  resources :eventclasses
+  resources :event_classes
 end
