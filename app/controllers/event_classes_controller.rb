@@ -1,6 +1,5 @@
 class EventClassesController < ApplicationController
   # before_action :set_eventclass, only: [:show, :edit, :update, :destroy]
-
   # GET /eventclasses
   def index
     @event_classes = EventClass.all

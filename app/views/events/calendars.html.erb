@@ -1,0 +1,6 @@
+<ul>
+  <% @calendar_list.items.each do |calendar| %>
+
+    <li><%= calendar.summary %> <%= link_to "Events", "events/" + calendar.id%></li>
+  <% end %>
+</ul>
