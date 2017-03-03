@@ -1,0 +1,15 @@
+<h2>New Event Class</h2>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for @event_class do |f| %>
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+
+      <%= fields_for @event_class.metric_types do |metric_form| %>
+        <%= metric_form.check_box :integer %>
+      <% end %>
+      
+      <%= f.submit "Create Event Class", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

@@ -1,5 +1,5 @@
-class EventclassesController < ApplicationController
-  before_action :set_eventclass, only: [:show, :edit, :update, :destroy]
+class EventClassesController < ApplicationController
+  # before_action :set_eventclass, only: [:show, :edit, :update, :destroy]
 
   # GET /eventclasses
   def index
@@ -8,12 +8,12 @@ class EventclassesController < ApplicationController
 
   # GET /eventclasses/1
   def show
-    @eventclass = Eventclass(params[:id])
+    @event_class = Eventclass(params[:id])
   end
 
   # GET /eventclasses/new
   def new
-    @eventclass = Eventclass.new
+    @event_class = EventClass.new
   end
 
   # GET /eventclasses/1/edit
