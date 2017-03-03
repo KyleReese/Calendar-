@@ -3,7 +3,7 @@
     <%= form_for @event do |f| %>
       <%= f.label :name %>
       <%= f.text_field :name %>
-      <div>METRICS:</div>
+      <div>Metrics:</div>
       <ul>
       <%= f.fields_for :int_metric do |builder|%>
       <li>
