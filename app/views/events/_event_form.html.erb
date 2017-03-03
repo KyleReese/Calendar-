@@ -3,13 +3,24 @@
     <%= form_for @event do |f| %>
       <%= f.label :name %>
       <%= f.text_field :name %>
-
-<!-- We need to do something with the fields_for method -->
       <div>METRICS:</div>
       <ul>
-      <%= f.fields_for :metric do |builder|%>
+      <%= f.fields_for :int_metric do |builder|%>
       <li>
-        <%= builder.text_field :name %>
+        <%= builder.label :integer_value %>
+        <%= builder.number_field :int_val %>
+      </li>
+      <% end %>
+      <%= f.fields_for :bool_metric do |builder|%>
+      <li>
+        <%= builder.label :boolean_value %>
+        <%= builder.check_box :bool_val %>
+      </li>
+      <% end %>
+      <%= f.fields_for :time_metric do |builder|%>
+      <li>
+        <%= builder.label :time_value %>
+        <%= builder.time_field :time_val %>
       </li>
       <% end %>
       </ul>
