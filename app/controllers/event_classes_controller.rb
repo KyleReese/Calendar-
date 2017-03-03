@@ -22,18 +22,18 @@ class EventClassesController < ApplicationController
 
   # POST /eventclasses
   def create
-    @eventclass = Eventclass.new(eventclass_params)
-    @eventclass.save
+    @event_class = EventClass.create(event_class_params)
+    redirect_to event_classes_path
   end
 
   # PATCH/PUT /eventclasses/1
   def update
-    @eventclass.update(eventclass_params)
+    # @eventclass.update(eventclass_params)
   end
 
   # DELETE /eventclasses/1
   def destroy
-    @eventclass.destroy
+    # @eventclass.destroy
   end
 
   private
@@ -43,7 +43,7 @@ class EventClassesController < ApplicationController
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def eventclass_params
-      params.fetch(:eventclass, {})
+    def event_class_params
+      params.require(:event_class).permit(:name, :int_metric, :bool_metric, :time_metric)
     end
 end

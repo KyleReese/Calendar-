@@ -5,10 +5,14 @@
       <%= f.label :name %>
       <%= f.text_field :name %>
 
-      <%= fields_for @event_class.metric_types do |metric_form| %>
-        <%= metric_form.check_box :integer %>
-      <% end %>
-      
+      <%= f.label :integer_metric %>
+      <%= f.check_box :int_metric %>
+
+      <%= f.label :boolean_metric %>
+      <%= f.check_box :bool_metric %>
+
+      <%= f.label :time_metric %>
+      <%= f.check_box :time_metric %>
       <%= f.submit "Create Event Class", class: "btn btn-primary" %>
     <% end %>
   </div>
