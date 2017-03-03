@@ -1,0 +1,7 @@
+<h2><%= @event_class.name %></h2>
+<h3>Metrics</h3>
+<ul>
+  <%if (@event_class.int_metric)%><li>Integer Metric</li> <% end %>
+  <%if (@event_class.bool_metric)%><li>Boolean Metric</li> <% end %>
+  <%if (@event_class.time_metric)%><li>Time Metric</li> <% end %>
+</ul>

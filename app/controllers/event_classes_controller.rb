@@ -8,7 +8,7 @@ class EventClassesController < ApplicationController
 
   # GET /eventclasses/1
   def show
-    @event_class = Eventclass(params[:id])
+    @event_class = EventClass.find(params[:id])
   end
 
   # GET /eventclasses/new
