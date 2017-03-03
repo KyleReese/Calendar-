@@ -1,4 +1,34 @@
 <h1>Reports</h1>
+<style>
+
+.chart div {
+  font: 10px sans-serif;
+  background-color: steelblue;
+  text-align: right;
+  padding: 3px;
+  margin: 1px;
+  color: white;
+}
+
+</style>
+<div class="chart"></div>
+
+<script>
+
+var datag = [4, 8, 15, 16, 23, 42];
+
+var x = d3.scale.linear()
+    .domain([0, d3.max(datag)])
+    .range([0, 420]);
+
+d3.select(".chart")
+  .selectAll("div")
+    .data(datag)
+  .enter().append("div")
+    .style("width", function(d) { return x(d) + "px"; })
+    .text(function(d) { return d; });
+
+</script>
 
 <h3>Type of each metric:</h3>
 <% @data.each do |data| %> 
