@@ -10,17 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170303003537) do
+ActiveRecord::Schema.define(version: 20170303013016) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "event_classes", force: :cascade do |t|
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
     t.integer  "event_id"
-    t.text     "metric_types", default: [],              array: true
     t.text     "name"
+    t.boolean  "int_metric",  default: false
+    t.boolean  "bool_metric", default: false
+    t.boolean  "time_metric", default: false
     t.index ["event_id"], name: "index_event_classes_on_event_id", using: :btree
   end
 
