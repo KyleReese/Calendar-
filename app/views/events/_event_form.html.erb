@@ -4,11 +4,16 @@
       <%= f.label :name %>
       <%= f.text_field :name %>
 
-<!-- We need to do something with the fields_for method
-      <% #f.fields_for :metric do |builder|%>
-        <% #builder.input :name %>
-      <% #end %>
--->
+<!-- We need to do something with the fields_for method -->
+      <div>METRICS:</div>
+      <ul>
+      <%= f.fields_for :metric do |builder|%>
+      <li>
+        <%= builder.text_field :name %>
+      </li>
+      <% end %>
+      </ul>
+
       <%= f.submit "Create Event", class: "btn btn-primary" %>
     <% end %>
   </div>
