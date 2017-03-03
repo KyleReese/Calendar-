@@ -1,1 +1,6 @@
-<h1>Event Class</h1>
+<h1>Event Classes</h1>
+<ul>
+  <% @event_classes.each do |e_class| %>
+    <li><a href="<%= "/event_classes/#{e_class.id}"%>"><%= e_class.name %></a></li>
+  <% end %>
+</ul>

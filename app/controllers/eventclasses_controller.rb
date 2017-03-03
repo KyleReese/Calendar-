@@ -3,6 +3,7 @@ class EventclassesController < ApplicationController
 
   # GET /eventclasses
   def index
+    @event_classes = EventClass.all
   end
 
   # GET /eventclasses/1
