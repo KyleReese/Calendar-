@@ -6,7 +6,6 @@ Rails.application.routes.draw do
 
   resources :users
   root to: "home#index"
-
   resources :events
   resources :reports
   resources :event_classes
