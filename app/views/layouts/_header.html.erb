@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  
+
   <%= csrf_meta_tags %>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -9,13 +9,14 @@
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="">Calendar++</a>
+      <div class="navbar-brand">Calendar++</div>
     </div>
     <ul class="nav navbar-nav">
-      <li><%= link_to 'Home', root_url %></li>
-      <li><%= link_to 'Events', events_url %></li>
-      <li><%= link_to 'Reports', reports_url %></li>
-      <li><%= link_to 'User', users_url %></li>
+      <li><%= link_to 'Home', root_path %></li>
+      <li><%= link_to 'Event Classes', event_classes_path %></li>
+      <li><%= link_to 'Events', events_path %></li>
+      <li><%= link_to 'Reports', reports_path %></li>
+      <li><%= link_to 'User', users_path %></li>
     </ul>
   </div>
 </nav>
