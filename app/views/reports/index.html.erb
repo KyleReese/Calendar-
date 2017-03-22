@@ -1,16 +1,5 @@
 <h1>Reports</h1>
-<style>
 
-.chart div {
-  font: 10px sans-serif;
-  background-color: steelblue;
-  text-align: right;
-  padding: 3px;
-  margin: 1px;
-  color: white;
-}
-
-</style>
 <div class="chart"></div>
 
 <script>
@@ -31,9 +20,8 @@ d3.select(".chart")
 </script>
 
 <h3>Type of each metric:</h3>
-<% @data.each do |data| %> 
+<% @data.each do |data| %>
 
-    <p><%= data.metric_type %></p>   
+    <p><%= data.metric_type %></p>
 
-<% end %>                        
- 
+<% end %>
