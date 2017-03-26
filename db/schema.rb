@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170326012837) do
+ActiveRecord::Schema.define(version: 20170326025217) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,14 @@ ActiveRecord::Schema.define(version: 20170326012837) do
     t.text     "name"
     t.integer  "event_class_id"
     t.index ["metric_id"], name: "index_events_on_metric_id", using: :btree
+  end
+
+  create_table "metric_classes", force: :cascade do |t|
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.integer  "event_class_id"
+    t.integer  "metric_type"
+    t.text     "name"
   end
 
   create_table "metrics", force: :cascade do |t|
