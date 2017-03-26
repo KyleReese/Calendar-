@@ -5,7 +5,7 @@ FactoryGirl.define do
   end
 
   factory :bool_metric, class: Metric do
-    bool_val true
+    boolean_val true
     metric_type Metric.types[:boolean]
   end
 
