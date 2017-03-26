@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170303152029) do
+ActiveRecord::Schema.define(version: 20170326012837) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 20170303152029) do
     t.string   "event_calendar_id"
     t.integer  "metric_id"
     t.text     "name"
+    t.integer  "event_class_id"
     t.index ["metric_id"], name: "index_events_on_metric_id", using: :btree
   end
 
