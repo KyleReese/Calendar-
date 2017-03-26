@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170326030506) do
+ActiveRecord::Schema.define(version: 20170326031119) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,13 @@ ActiveRecord::Schema.define(version: 20170326030506) do
     t.integer  "metric_class_id"
     t.index ["event_id"], name: "index_event_classes_on_event_id", using: :btree
     t.index ["metric_class_id"], name: "index_event_classes_on_metric_class_id", using: :btree
+  end
+
+  create_table "event_event_classes", force: :cascade do |t|
+    t.integer "event_class_id"
+    t.integer "event_id"
+    t.index ["event_class_id"], name: "index_event_event_classes_on_event_class_id", using: :btree
+    t.index ["event_id"], name: "index_event_event_classes_on_event_id", using: :btree
   end
 
   create_table "events", force: :cascade do |t|
