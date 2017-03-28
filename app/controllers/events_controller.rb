@@ -108,7 +108,7 @@ class EventsController < ApplicationController
           Metric.new(
             int_val: m[:metric][:int_val],
             boolean_val: m[:metric][:bool_val],
-            time_val: m[:metric][:tkme_val],
+            time_val: m[:metric][:time_val],
             metric_type: type_map[m[:type]]
           )
       end
