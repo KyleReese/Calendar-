@@ -53,7 +53,7 @@ class EventsController < ApplicationController
     service = Google::Apis::CalendarV3::CalendarService.new
     service.authorization = client
     calendar_id = 'primary'
-    @event_list = service.list_events(params[:calendar_id], 
+    @event_list = service.list_events(params[:calendar_id],
                                single_events: true,
                                order_by: 'startTime',
                                time_min: Time.now.iso8601)
