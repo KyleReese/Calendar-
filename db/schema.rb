@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170326031119) do
+ActiveRecord::Schema.define(version: 20170327205532) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,13 @@ ActiveRecord::Schema.define(version: 20170326031119) do
     t.integer  "metric_class_id"
     t.index ["event_id"], name: "index_event_classes_on_event_id", using: :btree
     t.index ["metric_class_id"], name: "index_event_classes_on_metric_class_id", using: :btree
+  end
+
+  create_table "event_classes_events", force: :cascade do |t|
+    t.integer "event_class_id"
+    t.integer "event_id"
+    t.index ["event_class_id"], name: "index_event_classes_events_on_event_class_id", using: :btree
+    t.index ["event_id"], name: "index_event_classes_events_on_event_id", using: :btree
   end
 
   create_table "event_event_classes", force: :cascade do |t|
@@ -39,6 +46,7 @@ ActiveRecord::Schema.define(version: 20170326031119) do
     t.integer  "metric_id"
     t.text     "name"
     t.integer  "event_class_id"
+    t.index ["event_class_id"], name: "index_events_on_event_class_id", using: :btree
     t.index ["metric_id"], name: "index_events_on_metric_id", using: :btree
   end
 
@@ -82,5 +90,6 @@ ActiveRecord::Schema.define(version: 20170326031119) do
 
   add_foreign_key "event_classes", "events"
   add_foreign_key "event_classes", "metric_classes"
+  add_foreign_key "events", "event_classes"
   add_foreign_key "events", "metrics"
 end

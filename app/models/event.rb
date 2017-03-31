@@ -1,4 +1,5 @@
 class Event < ApplicationRecord
+  has_many :event_event_class
+  has_many :event_classes, through: :event_event_class
   has_many :metrics
-  has_and_belongs_to_many :event_class
 end

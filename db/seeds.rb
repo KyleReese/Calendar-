@@ -12,7 +12,8 @@ require 'factory_girl_rails'
 10.times do
   # byebug
   FactoryGirl.create :event_class_with_events
-  FactoryGirl.create :int_metric
+  # FactoryGirl.create :int_metric
+
   # FactoryGirl.create :int_metric
   # FactoryGirl.create :int_metric
 end
