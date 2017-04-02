@@ -1,0 +1,21 @@
+<!-- <div class="row"> -->
+  <!-- <div class="col-md-6 col-md-offset-3"> -->
+      <%= locals[:form].fields_for "metrics_#{locals[:index]}" do |builder|%>
+      <tr>
+        <h5><%= locals[:metric_class].name %></h5>
+        <%
+        case locals[:metric_class].metric_type
+        when MetricClass.types[:integer] %>
+             <%= builder.label :integer_value %>
+             <%= builder.number_field :int_val %>
+        <% when MetricClass.types[:boolean] %>
+             <%= builder.label :boolean_value %>
+             <%= builder.check_box :boolean_val %>
+        <% when MetricClass.types[:time] %>
+             <%= builder.label :time_value %>
+             <%= builder.time_select :time_val %>
+        <% end %>
+      </tr>
+      <% end %>
+  <!-- </div> -->
+<!-- </div> -->

@@ -4,27 +4,17 @@
       <%= f.label :name %>
       <%= f.text_field :name %>
       <div>Metrics:</div>
-      <ul>
-      <%= f.fields_for :int_metric do |builder|%>
-      <li>
-        <%= builder.label :integer_value %>
-        <%= builder.number_field :int_val %>
-      </li>
-      <% end %>
-      <%= f.fields_for :bool_metric do |builder|%>
-      <li>
-        <%= builder.label :boolean_value %>
-        <%= builder.check_box :bool_val %>
-      </li>
-      <% end %>
-      <%= f.fields_for :time_metric do |builder|%>
-      <li>
-        <%= builder.label :time_value %>
-        <%= builder.time_field :time_val %>
-      </li>
-      <% end %>
-      </ul>
+      <table>
+        <% @event.metric_classes.each_with_index do |metric_class, i| %>
+          <%= render 'metrics/edit_metric', locals: {
+             metric_class: metric_class,
+             index: i,
+             form: f
+           } %>
+        <% end %>
+      </table>
 
       <%= f.submit "Create Event", class: "btn btn-primary" %>
     <% end %>
   </div>
+</div>
