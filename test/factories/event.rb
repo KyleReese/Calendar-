@@ -3,8 +3,8 @@ EVENT_NAMES = ['Awesome Event', 'Another Great Event']
 
 FactoryGirl.define do
   factory :event do
-    name EVENT_NAMES.sample
-    
+    name { EVENT_NAMES.sample }
+
     factory :event_with_multiple_event_clsses do
       transient do
         event_class_count 3
@@ -18,10 +18,6 @@ FactoryGirl.define do
           end
         end
       end
-
-
     end
-
-
   end
 end

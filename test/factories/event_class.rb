@@ -1,7 +1,7 @@
 EVENT_CLASS_NAMES = ['Linear Algebra Assignments', 'Work']
 FactoryGirl.define do
   factory :event_class do |event_class|
-    name EVENT_CLASS_NAMES.sample
+    name { EVENT_CLASS_NAMES.sample }
 
     factory :event_class_with_events do
       # posts_count is declared as a transient attribute and available in
