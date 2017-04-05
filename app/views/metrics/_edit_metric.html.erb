@@ -1,0 +1,17 @@
+<%= locals[:form].fields_for "metrics[#{locals[:index]}]", locals[:metric] do |builder|%>
+<tr>
+  <h5><%= locals[:metric].name %></h5>
+  <%
+  case locals[:metric].metric_type
+  when Metric.types[:integer] %>
+       <%= builder.label :integer_value %>
+       <%= builder.number_field :int_val %>
+  <% when Metric.types[:boolean] %>
+       <%= builder.label :boolean_value %>
+       <%= builder.check_box :boolean_val %>
+  <% when Metric.types[:time] %>
+       <%= builder.label :time_value %>
+       <%= builder.time_select :time_val, ignore_date: true %>
+  <% end %>
+</tr>
+<% end %>

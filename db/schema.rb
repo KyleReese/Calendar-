@@ -10,20 +10,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170303152029) do
+ActiveRecord::Schema.define(version: 20170403032026) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "event_classes", force: :cascade do |t|
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
     t.integer  "event_id"
     t.text     "name"
-    t.boolean  "int_metric",  default: false
-    t.boolean  "bool_metric", default: false
-    t.boolean  "time_metric", default: false
+    t.integer  "metric_class_id"
     t.index ["event_id"], name: "index_event_classes_on_event_id", using: :btree
+    t.index ["metric_class_id"], name: "index_event_classes_on_metric_class_id", using: :btree
+  end
+
+  create_table "event_classes_events", force: :cascade do |t|
+    t.integer "event_class_id"
+    t.integer "event_id"
+    t.index ["event_class_id"], name: "index_event_classes_events_on_event_class_id", using: :btree
+    t.index ["event_id"], name: "index_event_classes_events_on_event_id", using: :btree
+  end
+
+  create_table "event_event_classes", force: :cascade do |t|
+    t.integer "event_class_id"
+    t.integer "event_id"
+    t.index ["event_class_id"], name: "index_event_event_classes_on_event_class_id", using: :btree
+    t.index ["event_id"], name: "index_event_event_classes_on_event_id", using: :btree
   end
 
   create_table "events", force: :cascade do |t|
@@ -32,18 +45,29 @@ ActiveRecord::Schema.define(version: 20170303152029) do
     t.string   "event_calendar_id"
     t.integer  "metric_id"
     t.text     "name"
+    t.integer  "event_class_id"
+    t.index ["event_class_id"], name: "index_events_on_event_class_id", using: :btree
     t.index ["metric_id"], name: "index_events_on_metric_id", using: :btree
   end
 
+  create_table "metric_classes", force: :cascade do |t|
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.integer  "event_class_id"
+    t.integer  "metric_type"
+    t.text     "name"
+  end
+
   create_table "metrics", force: :cascade do |t|
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
     t.integer  "int_val"
     t.boolean  "boolean_val"
     t.time     "time_val"
     t.string   "metric_type"
     t.text     "name"
     t.integer  "event_id"
+    t.integer  "metric_class_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -66,5 +90,7 @@ ActiveRecord::Schema.define(version: 20170303152029) do
   end
 
   add_foreign_key "event_classes", "events"
+  add_foreign_key "event_classes", "metric_classes"
+  add_foreign_key "events", "event_classes"
   add_foreign_key "events", "metrics"
 end

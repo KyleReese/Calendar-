@@ -17,6 +17,7 @@ class EventClassesController < ApplicationController
 
   # GET /eventclasses/1/edit
   def edit
+    @event_class = EventClass.find(params[:id])
   end
 
   # POST /eventclasses
@@ -27,7 +28,9 @@ class EventClassesController < ApplicationController
 
   # PATCH/PUT /eventclasses/1
   def update
-    # @eventclass.update(eventclass_params)
+    @event_class = EventClass.find(params[:id])
+    @event_class.update_metric_classes(params[:event_class][:metric_classes])
+    redirect_to event_class_path
   end
 
   # DELETE /eventclasses/1

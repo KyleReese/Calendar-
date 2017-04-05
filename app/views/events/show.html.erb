@@ -2,7 +2,7 @@
 <h3>Metrics: </h3>
 <ul>
 <% @event.metrics.each do |m| %>
-  <li><%= m.int_val || m.boolean_val || m.time_val %></li>
+  <%= render 'metrics/show_metric', locals: { metric: m } %>
 <% end %>
 </ul>
 
