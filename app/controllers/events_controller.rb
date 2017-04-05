@@ -15,11 +15,12 @@ class EventsController < ApplicationController
 
   def new
     @event = Event.new
+    @event.initialize_metrics
   end
 
   def create
     @event = Event.create(event_params)
-    # @event.metrics.concat(handle_metrics)
+    @event.update_metrics(event_metrics)
     redirect_to events_path
   end
 
@@ -41,6 +42,6 @@ class EventsController < ApplicationController
   end
 
   def event_metrics
-    params[:event][:metrics]
+    params[:event][:metrics] || {}
   end
 end
