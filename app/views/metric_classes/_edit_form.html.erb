@@ -1,0 +1,20 @@
+<%= locals[:form].fields_for "metric_classes[#{locals[:metric_class].id}]", locals[:metric_class] do |builder|%>
+<tr>
+  <th>
+      <%= builder.label :name %>
+      <%= builder.text_field :name %>
+  </th>
+</tr>
+  <tr>
+    <td><%= builder.label :integer %></td>
+    <td><%= builder.radio_button :metric_type, 'integer' %></td>
+  </tr>
+  <tr>
+    <td><%= builder.label :boolean %></td>
+    <td><%= builder.radio_button :metric_type, 'boolean' %></td>
+  </tr>
+  <tr>
+    <td><%= builder.label :time %></td>
+    <td><%= builder.radio_button :metric_type, 'time' %></td>
+</tr>
+<% end %>
