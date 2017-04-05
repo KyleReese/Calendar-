@@ -1,0 +1,15 @@
+<%= form_for @event_class do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <table>
+    <tbody>
+  <% @event_class.metric_classes.each do |metric_class| %>
+    <%= render 'metric_classes/edit_form', locals: {
+       metric_class: metric_class,
+       form: f
+     } %>
+  <% end %>
+    </tbody>
+  </table>
+  <%= f.submit "Create Event Class", class: "btn btn-primary" %>
+<% end %>
