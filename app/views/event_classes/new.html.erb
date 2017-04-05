@@ -1,19 +1,19 @@
-<h2>New Event Class</h2>
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
+<h2>New Event Class:</h2>
+<div class="container text-left">
     <%= form_for @event_class do |f| %>
+      <br>
       <%= f.label :name %>
       <%= f.text_field :name %>
-
+      <br>
       <%= f.label :integer_metric %>
       <%= f.check_box :int_metric %>
-
+      <br>
       <%= f.label :boolean_metric %>
       <%= f.check_box :bool_metric %>
-
+      <br>
       <%= f.label :time_metric %>
       <%= f.check_box :time_metric %>
+      <br>
       <%= f.submit "Create Event Class", class: "btn btn-primary" %>
     <% end %>
-  </div>
 </div>

@@ -14,3 +14,11 @@
  *= require_self
  *= require bootstrap
  */
+body{padding-top: 100px;padding-bottom: 0px;}
+.footer{
+  padding-top: 0px;
+}
+
+.h1foot{
+  color : lightgray;
+}
