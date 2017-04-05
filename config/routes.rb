@@ -9,4 +9,5 @@ Rails.application.routes.draw do
   resources :events
   resources :reports
   resources :event_classes
+  resources :metric_classes, only: [:show]
 end
