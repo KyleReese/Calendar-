@@ -13,3 +13,28 @@
   </table>
   <%= f.submit "Create Event Class", class: "btn btn-primary" %>
 <% end %>
+
+<%= form_for @event_class do |f| %>
+  <table>
+    <tbody>
+      <%= f.fields_for "metric_classes[new]", MetricClass.new do |builder|%>
+      <tr>
+        <th>Name</th>
+      </tr>
+        <tr>
+          <td><%= builder.label :integer %></td>
+          <td><%= builder.radio_button :metric_type, 'integer' %></td>
+        </tr>
+        <tr>
+          <td><%= builder.label :boolean %></td>
+          <td><%= builder.radio_button :metric_type, 'boolean' %></td>
+        </tr>
+        <tr>
+          <td><%= builder.label :time %></td>
+          <td><%= builder.radio_button :metric_type, 'time' %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= f.submit "Add Metric", class: "btn btn-primary" %>
+<% end %>
