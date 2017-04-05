@@ -5,9 +5,9 @@
       <%= f.text_field :name %>
       <div>Metrics:</div>
       <table>
-        <% @event.metric_classes.each_with_index do |metric_class, i| %>
+        <% @event.metrics.each do |metric, i| %>
           <%= render 'metrics/edit_metric', locals: {
-             metric_class: metric_class,
+             metric: metric,
              index: i,
              form: f
            } %>

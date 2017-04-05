@@ -1,0 +1,12 @@
+<h5><%= locals[:metric].metric_class.name %></h5>
+<li>
+  <%
+    case locals[:metric].metric_type
+    when Metric.types[:integer] %>
+      <%= locals[:metric].int_val %>
+    <% when Metric.types[:boolean] %>
+      <%= locals[:metric].boolean_val %>
+    <% when Metric.types[:time] %>
+      <%= locals[:metric].time_val %>
+    <% end %>
+</li>

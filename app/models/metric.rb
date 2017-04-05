@@ -1,5 +1,5 @@
 class Metric < ApplicationRecord
-  has_one :metric_class
+  belongs_to :metric_class
   METRIC_TYPES = {
     integer: "integer",
     boolean: "boolean",
