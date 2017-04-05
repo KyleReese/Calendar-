@@ -15,4 +15,24 @@ class Event < ApplicationRecord
       )
     end
   end
+
+  def update_metrics(updated_metrics)
+    updated_metrics.keys.each do |id|
+      metric = metrics.find(id)
+      case metric.metric_type
+      when Metric.types[:integer]
+        val = updated_metrics[id]["int_val"]
+        metric.update!(int_val: val)
+      when Metric.types[:boolean]
+        val = updated_metrics[id]["boolean_val"]
+        metric.update!(boolean_val: val)
+        # TODO figure out why this is always false in params, but not in post
+      when Metric.types[:time]
+        hours = updated_metrics[id]["time_val(4i)"]
+        minutes = updated_metrics[id]["time_val(5i)"]
+        #TODO parse time
+      end
+    end
+  end
+
 end

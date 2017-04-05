@@ -9,6 +9,7 @@ class EventsController < ApplicationController
 
   def edit
     @event = Event.find(params[:id])
+    @event.initialize_metrics
   end
 
   def new
@@ -29,33 +30,16 @@ class EventsController < ApplicationController
 
   def update
     @event = Event.find(params[:id])
+    @event.update_metrics(event_metrics)
     @event.update(event_params)
-    # @event.metrics = handle_metrics
     redirect_to event_path
   end
 
-  # def handle_metrics
-  #   type_map = {
-  #     int_metric: Metric.types[:integer],
-  #     bool_metric: Metric.types[:boolean],
-  #     time_metric: Metric.types[:time]
-  #   }
-  #
-  #   event = params[:event]
-  #   metric_types = [:int_metric, :bool_metric, :time_metric]
-  #   metrics = metric_types.map { |m| {metric: event[m], type: m} }
-  #     .compact
-  #     .map do |m|
-  #         Metric.new(
-  #           int_val: m[:metric][:int_val],
-  #           boolean_val: m[:metric][:bool_val],
-  #           time_val: m[:metric][:tkme_val],
-  #           metric_type: type_map[m[:type]]
-  #         )
-  #     end
-  # end
-
   def event_params
     params.require(:event).permit(:name)
+  end
+
+  def event_metrics
+    params[:event][:metrics]
   end
 end
