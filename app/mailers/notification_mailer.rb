@@ -1,4 +1,4 @@
-require 'digest/sha2'  
+require 'digest/sha2'
 class NotificationMailer < ApplicationMailer
 	  default from: ENV['GMAIL_USERNAME']
 	  domain = 'calendar.plus.plus.team.mail'
@@ -17,4 +17,11 @@ class NotificationMailer < ApplicationMailer
          content_type: "text/html",
          subject: "Already rendered!")
   end
+	def send_email(user, email_subject, email_body)
+		@user = user
+		mail(to: @user.email,
+				 subject: email_subject,
+				 body: email_body)
+	end
+			 
 end
