@@ -2,7 +2,7 @@ require 'digest/sha2'
 class NotificationMailer < ApplicationMailer
 	  default from: ENV['GMAIL_USERNAME']
 	  domain = 'calendar.plus.plus.team.mail'
-	  default "Message-ID" => lambda {"<#{Digest::SHA2.hexdigest(Time.now.to_i.to_s)}@#{domain}>"}
+	  #default "Message-ID" => lambda {"<#{Digest::SHA2.hexdigest(Time.now.to_i.to_s)}@#{domain}>"}
 
 	# Call these methods like:
 	# NotificationMailer.sample_email(@user).deliver_now or .deliver_later
