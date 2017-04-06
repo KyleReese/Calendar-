@@ -1,19 +1,25 @@
 <h1>Metric Class</h1>
 <div class="chart"></div>
   <%= javascript_tag "datag = #{@data.to_json.html_safe};" %>
-  <script>
+<script>
 
   // var datag = [4, 8, 15, 16, 23, 42];
+  var names = datag.map(function(datum){
+    // debugger;
+    return datum.name;
+  })
+  var values = datag.map(function(datum){return datum.val;})
 
   var x = d3.scale.linear()
-      .domain([0, d3.max(datag)])
+      .domain([0, d3.max(values)])
       .range([0, 420]);
 
   d3.select(".chart")
     .selectAll("div")
-      .data(datag)
+      .data(values)
     .enter().append("div")
-      .style("width", function(d) { return x(d) + "px"; })
-      .text(function(d) { return d; });
-
+      .style("width", function(d) { return d * 5 + "px"; })
+      .text(function(d, i) {
+        return names[i] + ' : ' + d ;
+      });
 </script>
