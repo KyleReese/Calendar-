@@ -1,5 +1,19 @@
-<h2>ID: <%= @user.id%></h2>
+<h1><%= @user.email %></h1>
+<br>
 
-<ul>
-  <li><%= @user.email %></h2></li>
-</ul>
+<%= form_for(@user) do |f| %>
+<%= f.label "Notifications: " %>
+<br />
+<br />
+<label class="switch">
+  <%= f.check_box :notificationoption, :onclick => "this.form.submit()" %>
+  <div class="slider"></div>
+</label>
+<br />
+<br />
+<% if @user.notificationoption? %>
+Enabled, you will recieve notifications.
+<% else %>
+Disabled, no notifications will be sent.
+<% end %>
+<% end %>
