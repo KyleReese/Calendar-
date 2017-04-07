@@ -31,6 +31,7 @@ class EventsController < ApplicationController
   end
 
   def update
+    byebug
     @event = Event.find(params[:id])
     @event.update_metrics(event_metrics)
     @event.update(event_params)

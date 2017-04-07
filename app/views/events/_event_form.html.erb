@@ -14,6 +14,11 @@
         <% end %>
       </table>
 
+      <%= render 'event_classes/select', locals: {
+          form: f,
+          event_classes: @event.event_classes
+        } %>
+
       <%= f.submit "Create Event", class: "btn btn-primary" %>
     <% end %>
   </div>
