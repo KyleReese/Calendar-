@@ -1,6 +1,7 @@
 class EventsController < ApplicationController
   def index
     @events = Event.all
+    Event.sync_google_events GoogleCalendarService.events session["token"]
   end
 
   def show
