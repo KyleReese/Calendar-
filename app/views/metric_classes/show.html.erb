@@ -3,9 +3,7 @@
   <%= javascript_tag "datag = #{@data.to_json.html_safe};" %>
 <script>
 
-  // var datag = [4, 8, 15, 16, 23, 42];
   var names = datag.map(function(datum){
-    // debugger;
     return datum.name;
   })
   var values = datag.map(function(datum){return datum.val;})
@@ -20,6 +18,6 @@
     .enter().append("div")
       .style("width", function(d) { return d * 5 + "px"; })
       .text(function(d, i) {
-        return names[i] + ' : ' + d ;
+        return d;
       });
 </script>
