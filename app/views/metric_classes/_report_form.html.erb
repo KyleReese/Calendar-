@@ -1,3 +1,19 @@
 <h3>Form Report</h3>
-<!-- TODO generate query params -->
-<%= link_to "Generate Report", reports_path, class: "btn btn-default btn-xs" %>
+<%= form_tag(reports_path, method: "get") do %>
+  <%= hidden_field_tag(:metric_class_id, locals[:metric_class].id) %>
+
+  <% case locals[:metric_class].metric_type
+  when MetricClass.types[:integer] %>
+    <h4>Analysis Type</h4>
+    <%= label_tag(:analysis, "Standard Deviation") %>
+    <%= radio_button_tag(:analysis, "standard_deviation") %>
+
+    <h4>Filters</h4>
+    <%= label_tag(:min, "Minimum Number") %>
+    <%= number_field(:filter, :min) %>
+    <%= label_tag(:max, "Maximum Number") %>
+    <%= number_field(:filter, :max) %>
+
+  <% end %>
+  <%= submit_tag("Generate") %>
+<% end %>
