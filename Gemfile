@@ -6,6 +6,9 @@ git_source(:github) do |repo_name|
 end
 gem 'dotenv-rails', groups: [:development, :test]
 
+
+gem 'descriptive_statistics', '~> 2.4.0', :require => 'descriptive_statistics/safe'
+
 # Authentication
 gem 'therubyracer'
 gem 'devise'
