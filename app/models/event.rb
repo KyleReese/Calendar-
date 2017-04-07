@@ -24,9 +24,9 @@ class Event < ApplicationRecord
         val = updated_metrics[id]["int_val"]
         metric.update!(int_val: val)
       when Metric.types[:boolean]
-        val = updated_metrics[id]["boolean_val"]
+        type_map = {"1" => true, "0" => false}
+        val = type_map[updated_metrics[id]["boolean_val"].first]
         metric.update!(boolean_val: val)
-        # TODO figure out why this is always false in params, but not in post
       when Metric.types[:time]
         hours = updated_metrics[id]["time_val(4i)"]
         minutes = updated_metrics[id]["time_val(5i)"]
