@@ -16,6 +16,15 @@ class Event < ApplicationRecord
     end
   end
 
+  def self.sync_google_events(events)
+    events.items.each do |e|
+      event = Event.find_by(event_calendar_id: e.id)
+      if event.nil?
+        Event.create(event_calendar_id: e.id, name: e.summary)
+      end
+    end
+  end
+
   def update_metrics(updated_metrics)
     updated_metrics.keys.each do |id|
       metric = metrics.find(id)
