@@ -1,4 +1,4 @@
-EVENT_NAMES = ['Awesome Event', 'Another Great Event']
+EVENT_NAMES = ['Awesome Event', 'Another Great Event', 'Yet Another Event']
 
 
 FactoryGirl.define do

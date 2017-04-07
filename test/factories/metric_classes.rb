@@ -1,5 +1,5 @@
 NAMES = ['Important Metric', 'Another Metric']
-TYPES = [:integer, :boolean, :time]
+TYPES = [:integer, :boolean]
 
 FactoryGirl.define do
   factory :metric_class do

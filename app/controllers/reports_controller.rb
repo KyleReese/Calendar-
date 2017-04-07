@@ -9,8 +9,8 @@ class ReportsController < ApplicationController
     }
     @data = metric_class.metrics
       .map { |e| e.int_val }
-      .select { |e| min ? e > min.to_i : true }
-      .select { |e| max ? e < max.to_i : true }
+      .select { |e| !min.empty? ? e > min.to_i : true }
+      .select { |e| !max.empty? ? e < max.to_i : true }
       .extend(DescriptiveStatistics)
   end
 end
