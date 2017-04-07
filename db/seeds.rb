@@ -9,6 +9,6 @@
 
 require 'factory_girl_rails'
 
-10.times do
+3.times do
   FactoryGirl.create :event_class_with_events
 end
