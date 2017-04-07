@@ -1,7 +1,7 @@
 class Event < ApplicationRecord
   has_many :event_event_class
   has_many :event_classes, through: :event_event_class
-  has_many :metric_classes, -> {distinct}, through: :event_classes
+  has_many :metric_classes, -> {distinct}, through: :event_classes, dependent: :destroy
   has_many :metrics
 
   ##
@@ -31,6 +31,18 @@ class Event < ApplicationRecord
         hours = updated_metrics[id]["time_val(4i)"]
         minutes = updated_metrics[id]["time_val(5i)"]
         #TODO parse time
+      end
+    end
+
+    def update_event_classes(event_class_params)
+      event_class_params.keys.each do |id|
+        event_class = EventClass.find(id)
+        next unless event_class
+        if event_class_params[id] == "1"
+          event_classes << event_class unless event_classes.include? event_class
+        else
+          event_classes.delete event_class if event_classes.include? event_class
+        end
       end
     end
   end

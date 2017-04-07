@@ -1,7 +1,7 @@
 <h4>Event Classes</h4>
 <% EventClass.all.each do |e| %>
-  <% byebug %>
   <%= label_tag e.name %>
-  <%= check_box_tag "event_classes[#{e.id}]"  %>
+  <%= hidden_field_tag "event_classes[#{e.id}]", "0" %>
+  <%= check_box_tag "event_classes[#{e.id}]", "1", locals[:event_classes].include?(e)  %>
   <br>
 <% end %>
