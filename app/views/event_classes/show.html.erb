@@ -1,7 +1,16 @@
 <h2><%= @event_class.name %></h2>
 <h3>Metrics</h3>
-<ul>
-  <%if (@event_class.int_metric)%><li>Integer Metric</li> <% end %>
-  <%if (@event_class.bool_metric)%><li>Boolean Metric</li> <% end %>
-  <%if (@event_class.time_metric)%><li>Time Metric</li> <% end %>
-</ul>
+<table>
+  <tbody>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+    </tr>
+  <% @event_class.metric_classes.each do |metric_class| %>
+    <%= render 'metric_classes/show', locals: {
+      metric_class: metric_class
+    } %>
+  <% end %>
+</tbody>
+</table>
+<%= link_to "Edit Event Class", {controller: "event_classes", action: "edit"}, class: "btn btn-inverse" %>

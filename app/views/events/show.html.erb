@@ -2,8 +2,8 @@
 <h3>Metrics: </h3>
 <ul>
 <% @event.metrics.each do |m| %>
-  <li><%= m.int_val || m.boolean_val || m.time_val %></li>
+  <%= render 'metrics/show_metric', locals: { metric: m } %>
 <% end %>
 </ul>
 
-<%= link_to "Edit Metrics", edit_event_path, class: "btn btn-inverse" %>
+<%= link_to "Edit Metrics", edit_event_path, class: "btn btn-default btn-xs" %>

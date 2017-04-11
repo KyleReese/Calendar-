@@ -6,7 +6,7 @@
 </tr>
 <% @users.each do |user| %>
   <tr>
-    <td><%= user.email %></td>
+    <td><a href="<%= "/users/#{user.id}"%>"><%= user.email %></a></td>
     <td><%= user.id %></td>
   </tr>
 <% end %>

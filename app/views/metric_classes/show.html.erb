@@ -1,0 +1,25 @@
+<h1>Metric Class</h1>
+<div class="chart"></div>
+  <%= javascript_tag "datag = #{@data.to_json.html_safe};" %>
+<script>
+
+  var names = datag.map(function(datum){
+    return datum.name;
+  })
+  var values = datag.map(function(datum){return datum.val;})
+
+  var x = d3.scale.linear()
+      .domain([0, d3.max(values)])
+      .range([0, 420]);
+
+  d3.select(".chart")
+    .selectAll("div")
+      .data(values)
+    .enter().append("div")
+      .style("width", function(d) { return d * 5 + "px"; })
+      .text(function(d, i) {
+        return d;
+      });
+</script>
+
+<%= render 'report_form', locals: {metric_class: @metric_class} %>
