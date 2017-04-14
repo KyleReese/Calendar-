@@ -1,6 +1,7 @@
 class EventsController < ApplicationController
   def index
     @events = Event.all
+    Event.sync_google_events GoogleCalendarService.events session["token"]
   end
 
   def show
@@ -21,6 +22,7 @@ class EventsController < ApplicationController
   def create
     @event = Event.create(event_params)
     @event.update_metrics(event_metrics)
+    @event.update_event_classes(params[:event_classes])
     redirect_to events_path
   end
 
@@ -34,6 +36,7 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
     @event.update_metrics(event_metrics)
     @event.update(event_params)
+    @event.update_event_classes(params[:event_classes])
     redirect_to event_path
   end
 

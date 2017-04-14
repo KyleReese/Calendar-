@@ -1,10 +1,8 @@
 <h1>Reports</h1>
-
 <div class="chart"></div>
+<%= javascript_tag "datag = #{@data.to_json.html_safe};" %>
 
 <script>
-
-var datag = [4, 8, 15, 16, 23, 42];
 
 var x = d3.scale.linear()
     .domain([0, d3.max(datag)])
@@ -16,12 +14,11 @@ d3.select(".chart")
   .enter().append("div")
     .style("width", function(d) { return x(d) + "px"; })
     .text(function(d) { return d; });
-
 </script>
 
-<h3>Type of each metric:</h3>
-<% @data.each do |data| %>
-
-    <p><%= data.metric_type %></p>
-
+<% if @analytics[:standard_deviation]%>
+<h3>Statistics: </h3>
+<ul>
+  <li>Standard Deviation: <%= @data.standard_deviation %></li>
+</ul>
 <% end %>

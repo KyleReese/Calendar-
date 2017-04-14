@@ -6,13 +6,8 @@
 </tr>
 <% @users.each do |user| %>
   <tr>
-    <td><%= user.email %></td>
+    <td><a href="<%= "/users/#{user.id}"%>"><%= user.email %></a></td>
     <td><%= user.id %></td>
   </tr>
 <% end %>
 </table>
-<h3>Notifications</h3>
-<label class="switch">
-  <input type="checkbox">
-  <div class="slider"></div>
-</label>
