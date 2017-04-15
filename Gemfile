@@ -39,7 +39,9 @@ gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-
+#Fullcalendar::Rails
+gem 'fullcalendar-rails'
+gem 'momentjs-rails'
 
 gem 'pg'
 # Use Capistrano for deployment
