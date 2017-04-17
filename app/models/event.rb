@@ -20,7 +20,7 @@ class Event < ApplicationRecord
     events.items.each do |e|
       event = Event.find_by(event_calendar_id: e.id)
       if event.nil?
-        Event.create(event_calendar_id: e.id, name: e.summary)
+        Event.create(event_calendar_id: e.id, name: e.summary, startdate: e.start.date, startdatetime: e.start.date_time, enddate: e.end.date, enddatetime: e.end.date_time)
       end
     end
   end
