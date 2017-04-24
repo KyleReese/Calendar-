@@ -15,7 +15,7 @@ class GoogleCalendarService
   def self.add_event(token)
     service = Google::Apis::CalendarV3::CalendarService.new
     service.authorization = token
-    @event = Google::Apis::CalendarV3::Event.new({
+    event = Google::Apis::CalendarV3::Event.new({
       'summary':'Calendar++',
       'description':'A chance to hear more about Google\'s developer products.',
       'start':{
@@ -25,6 +25,6 @@ class GoogleCalendarService
         'date_time': DateTime.parse('2017-05-28T17:00:00-07:00'),
       }
     })
-    result = service.insert_event('primary',@event)
+    result = service.insert_event('primary',event)
   end
 end
