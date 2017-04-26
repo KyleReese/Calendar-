@@ -5,16 +5,19 @@ class EventsController < ApplicationController
   end
 
   def show
+    @user = current_user
     @event = Event.find(params[:id])
     @event.initialize_metrics
   end
 
   def edit
+    @user = current_user
     @event = Event.find(params[:id])
     @event.initialize_metrics
   end
 
   def new
+    @user = current_user
     @event = Event.new
     @event.initialize_metrics
   end
@@ -23,13 +26,13 @@ class EventsController < ApplicationController
     @event = Event.create(event_params)
     @event.update_metrics(event_metrics)
     @event.update_event_classes(params[:event_classes])
-    redirect_to events_path
+    redirect_to user_events_path
   end
 
   def destroy
     @event = Event.find(params[:id])
     @event.destroy!
-    redirect_to events_path
+    redirect_to user_events_path
   end
 
   def update
@@ -37,7 +40,7 @@ class EventsController < ApplicationController
     @event.update_metrics(event_metrics)
     @event.update(event_params)
     @event.update_event_classes(params[:event_classes])
-    redirect_to event_path
+    redirect_to user_event_path
   end
 
   def event_params

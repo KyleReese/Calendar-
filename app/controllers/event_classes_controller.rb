@@ -23,14 +23,14 @@ class EventClassesController < ApplicationController
   # POST /eventclasses
   def create
     @event_class = EventClass.create(event_class_params)
-    redirect_to event_classes_path
+    redirect_to user_event_classes_path
   end
 
   # PATCH/PUT /eventclasses/1
   def update
     @event_class = EventClass.find(params[:id])
     @event_class.update_metric_classes(params[:event_class][:metric_classes])
-    redirect_to event_class_path
+    redirect_to user_event_class_path
   end
 
   # DELETE /eventclasses/1

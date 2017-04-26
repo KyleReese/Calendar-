@@ -1,5 +1,5 @@
 <h3>Form Report</h3>
-<%= form_tag(reports_path, method: "get") do %>
+<%= form_tag(user_reports_path, method: "get") do %>
   <%= hidden_field_tag(:metric_class_id, locals[:metric_class].id) %>
 
   <% case locals[:metric_class].metric_type

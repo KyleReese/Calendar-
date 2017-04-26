@@ -9,6 +9,6 @@ $(document).ready(function() {
 <h1> Events: </h1>
 <ul>
   <% @events.each do |e| %>
-    <li><a href="<%= "/events/#{e.id}"%>"><%= e.name %></a></li>
+    <li><a href="<%= user_event_path(id: e.id) %>"><%= e.name %></a></li>
   <% end %>
 </ul>

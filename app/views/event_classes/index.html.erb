@@ -1,8 +1,8 @@
 <h1>Event Classes</h1>
 <ul>
   <% @event_classes.each do |e_class| %>
-    <li><h3><a href="<%= "/event_classes/#{e_class.id}"%>"><%= e_class.name %></a></h3></li>
+    <li><h3><a href="<%= user_event_class_path(id: e_class.id)%>"><%= e_class.name %></a></h3></li>
   <% end %>
 </ul>
 <br>
-<%= link_to "Create New Event Class", {controller: "event_classes", action: "new"}, class: "btn btn-default btn-xs" %>
+<%= link_to "Create New Event Class", new_user_event_class_path, class: "btn btn-default btn-xs" %>
