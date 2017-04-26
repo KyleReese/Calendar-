@@ -3,6 +3,12 @@
     <%= form_for [@user, @event] do |f| %>
       <%= f.label :name %>
       <%= f.text_field :name %>
+      <br>
+      <%= f.label :startdatetime %>
+      <%= f.datetime_select :startdatetime %>
+      <br>
+      <%= f.label :enddatetime %>
+      <%= f.datetime_select :enddatetime %>
       <div>Metrics:</div>
       <table>
         <% @event.metrics.each do |metric, i| %>
