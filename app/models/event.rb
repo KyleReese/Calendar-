@@ -25,6 +25,38 @@ class Event < ApplicationRecord
     end
   end
 
+
+  #trying to get all the ids that are recurring by cutting ending time of id as that is the
+  #only difference then do what you were doing with the one event
+  def self.update_event_classes(event,event_class_params)
+    if event.event_calendar_id != nil
+      r_id = event.event_calendar_id.to_s.first(-17)
+      events = Event.where('event_calendar_id ILIKE ?',"%#{r_id}%")
+      events.each do |i|
+        i.update_event_classes(event_class_params)
+        end
+      else
+        event.update_event_classes(event_class_params)
+      end
+
+
+
+  end
+  def update_event_classes(event_class_params)
+      event_class_params.keys.each do |id|
+        event_class = EventClass.find(id)
+        next unless event_class
+        if event_class_params[id] == "1"
+          event_classes << event_class unless event_classes.include? event_class
+        else
+          event_classes.delete event_class if event_classes.include? event_class
+        end
+      end
+end
+
+
+
+
   def update_metrics(updated_metrics)
     updated_metrics.keys.each do |id|
       metric = metrics.find(id)
@@ -39,21 +71,13 @@ class Event < ApplicationRecord
       when Metric.types[:time]
         hours = updated_metrics[id]["time_val(4i)"]
         minutes = updated_metrics[id]["time_val(5i)"]
-        #TODO parse time
+        time = Time.new(2000, 1, 1, hours, minutes)
+        time = Time.zone.local_to_utc(time)#make sure it doesn't take the liberty of changing to 7 hours ahead unannounced
+        metric.update!({time_val: time})
       end
     end
 
-    def update_event_classes(event_class_params)
-      event_class_params.keys.each do |id|
-        event_class = EventClass.find(id)
-        next unless event_class
-        if event_class_params[id] == "1"
-          event_classes << event_class unless event_classes.include? event_class
-        else
-          event_classes.delete event_class if event_classes.include? event_class
-        end
-      end
-    end
+
   end
 
 end
