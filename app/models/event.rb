@@ -74,7 +74,6 @@ end
         time = Time.new(2000, 1, 1, hours, minutes)
         time = Time.zone.local_to_utc(time)#make sure it doesn't take the liberty of changing to 7 hours ahead unannounced
         metric.update!({time_val: time})
-        #TODO parse time
       end
     end
 

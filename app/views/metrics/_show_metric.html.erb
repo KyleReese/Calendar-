@@ -7,6 +7,6 @@
     <% when Metric.types[:boolean] %>
       <%= locals[:metric].boolean_val %>
     <% when Metric.types[:time] %>
-      <%= locals[:metric].time_val.strftime("%H:%M") %>
+      <%= locals[:metric].time_val.strftime("%H:%M") if locals[:metric].time_val %>
     <% end %>
 </li>
