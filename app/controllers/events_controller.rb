@@ -37,9 +37,10 @@ class EventsController < ApplicationController
 
   def update
     @event = Event.find(params[:id])
+    Event.update_event_classes(@event.event_calendar_id, params[:event_classes])
     @event.update_metrics(event_metrics)
     @event.update(event_params)
-    @event.update_event_classes(params[:event_classes])
+
     redirect_to user_event_path
   end
 
