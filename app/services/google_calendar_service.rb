@@ -19,10 +19,10 @@ class GoogleCalendarService
       'summary':'Calendar++',
       'description':'A chance to hear more about Google\'s developer products.',
       'start':{
-        'date_time': DateTime.parse('2017-05-28T09:00:00-06:00'),
+        'date_time': DateTime.parse('2017-04-27T09:00:00-06:00'),
       },
       'end':{
-        'date_time': DateTime.parse('2017-05-28T17:00:00-07:00'),
+        'date_time': DateTime.parse('2017-04-27T10:00:00-06:00'),
       }
     })
     result = service.insert_event('primary',event)
