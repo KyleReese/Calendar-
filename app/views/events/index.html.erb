@@ -1,7 +1,8 @@
 <script type="text/javascript">
 $(document).ready(function() {
 
-    $('#calendar').fullCalendar({events: './events.json'})
+$('#calendar').fullCalendar({events: '/users/<%=@user.id%>/events.json'})
+
 
 });
 </script>
