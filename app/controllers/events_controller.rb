@@ -40,7 +40,7 @@ class EventsController < ApplicationController
 
     @event.update_metrics(event_metrics)
     @event.update(event_params)
-    Event.update_event_classes(@event.event_calendar_id, params[:event_classes])
+    Event.update_event_classes(@event, params[:event_classes])
 
     redirect_to user_event_path
   end
