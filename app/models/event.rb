@@ -28,10 +28,21 @@ class Event < ApplicationRecord
 
   #trying to get all the ids that are recurring by cutting ending time of id as that is the
   #only difference then do what you were doing with the one event
-  def self.update_event_classes(id,event_class_params)
-    r_id = id.to_s.first(-8)+ "%w"
-    @events = Event.where('event_calendar_id LIKE ?',r_id)
-    @events.each do |i|
+  def self.update_event_classes(event,event_class_params)
+    if event.event_calendar_id != nil
+      r_id = event.event_calendar_id.to_s.first(-17)
+      events = Event.where('event_calendar_id ILIKE ?',"%#{r_id}%")
+      events.each do |i|
+        i.update_event_classes(event_class_params)
+        end
+      else
+        event.update_event_classes(event_class_params)
+      end
+
+
+
+  end
+  def update_event_classes(event_class_params)
       event_class_params.keys.each do |id|
         event_class = EventClass.find(id)
         next unless event_class
@@ -41,11 +52,10 @@ class Event < ApplicationRecord
           event_classes.delete event_class if event_classes.include? event_class
         end
       end
+end
 
-    end
 
 
-  end
 
   def update_metrics(updated_metrics)
     updated_metrics.keys.each do |id|
