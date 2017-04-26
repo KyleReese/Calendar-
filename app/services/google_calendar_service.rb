@@ -9,7 +9,8 @@ class GoogleCalendarService
        calendar_id,
        single_events: true,
        order_by: 'startTime',
-       time_min: Time.now.iso8601
+       time_min: Time.now.iso8601,
+       max_results: 15
    )
   end
 end
