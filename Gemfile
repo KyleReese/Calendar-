@@ -45,6 +45,8 @@ gem 'fullcalendar-rails'
 gem 'momentjs-rails'
 
 gem 'pg'
+
+gem 'chronic'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

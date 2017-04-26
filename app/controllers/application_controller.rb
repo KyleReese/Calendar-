@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
 
   def allowed_path?
     reject if request.params["user_id"] && !current_user
-    reject if request.params["user_id"] && current_user.id.to_s != request.params["user_id"]
+    reject if request.params["user_id"] && current_user && current_user.id.to_s != request.params["user_id"]
   end
   # before_action :authenticate_user!
 end
