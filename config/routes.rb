@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   get 'google_event/index'
-  resources :testing
+  resources :api
 
   get 'reports/index'
 
